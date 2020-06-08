@@ -14,7 +14,7 @@ import { useParams, Link } from 'react-router-dom';
 import { useComment } from '../../hooks/use-comment';
 import { getFormattedDate } from '../../utils/format-date';
 
-function ArticleComment({ onCreate, onDelete }) {
+function ArticleComment({ isMyArticle, onCreate, onDelete }) {
    const { slug } = useParams();
    const { status, data, error } = useComment(slug);
    const [comment, setComment] = useState('');
@@ -61,13 +61,17 @@ function ArticleComment({ onCreate, onDelete }) {
          ) : status == 'error' ? (
             <span>Error: {error.message}</span>
          ) : (
-            <CommentBox comments={data} onDelete={onDelete} />
+            <CommentBox
+               comments={data}
+               onDelete={onDelete}
+               isMyArticle={isMyArticle}
+            />
          )}
       </Fragment>
    );
 }
 
-function CommentBox({ comments, onDelete }) {
+function CommentBox({ comments, onDelete, isMyArticle }) {
    return comments.map(comment => (
       <Box
          key={comment.id}
@@ -85,12 +89,14 @@ function CommentBox({ comments, onDelete }) {
                   {getFormattedDate(comment.updatedAt)}
                </Text>
             </Flex>
-            <IconButton
-               sx={{ border: 'none' }}
-               onClick={() => onDelete(comment.id)}
-            >
-               <span className='material-icons'>delete</span>
-            </IconButton>
+            {isMyArticle && (
+               <IconButton
+                  sx={{ border: 'none' }}
+                  onClick={() => onDelete(comment.id)}
+               >
+                  <span className='material-icons'>delete</span>
+               </IconButton>
+            )}
          </Flex>
       </Box>
    ));

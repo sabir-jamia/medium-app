@@ -53,6 +53,7 @@ function Article({
             <ArticleComment
                onComment={handleCreateComment}
                onDelete={handleDeleteComment}
+               isMyArticle={isMyArticle}
             />
          </Flex>
       </Fragment>

@@ -36,7 +36,7 @@ function ArticlePage() {
          username: article.author.username,
          following: article.author.following,
       };
-      loggedinOnly(
+      return loggedinOnly(
          () => Promise.resolve(''),
          () => mutateFollow(mutationArgs)
       );
