@@ -2,13 +2,13 @@ import React, { Suspense, lazy } from 'react';
 import { Route, Switch } from 'react-router-dom';
 
 import HomePage from './pages/home';
-import ArticlePage from './pages/article';
-import ProfilePage from './pages/profile';
-import EditArticle from './pages/edit-article';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 
 const CreateArticlePage = lazy(() => import('./pages/create-article'));
+const EditArticlePage = lazy(() => import('./pages/edit-article'));
+const ProfilePage = lazy(() => import('./pages/profile'));
+const ArticlePage = lazy(() => import('./pages/article'));
 
 const AppRoutes = () => (
    <Suspense fallback={'Loading app...'}>
@@ -32,7 +32,7 @@ const AppRoutes = () => (
             <CreateArticlePage />
          </Route>
          <Route path='/article/edit/:slug'>
-            <EditArticle />
+            <EditArticlePage />
          </Route>
       </Switch>
    </Suspense>

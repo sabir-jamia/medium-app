@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDom from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ReactQueryConfigProvider } from 'react-query';
-import { ReactQueryDevtools } from 'react-query-devtools';
+// import { ReactQueryDevtools } from 'react-query-devtools';
 import { ThemeProvider, Styled } from 'theme-ui';
 
 import theme from './theme';
@@ -14,17 +14,12 @@ const queryConfig = {
    refetchAllOnWindowFocus: false,
 };
 
-const components = {
-   pre: ({ children }) => <>{children}</>,
-   code: Prism,
-};
-
 ReactDom.render(
    <BrowserRouter>
-      <ReactQueryDevtools initialIsOpen={false} />
+      {/* <ReactQueryDevtools initialIsOpen={false} /> */}
       <ReactQueryConfigProvider config={queryConfig}>
          <AuthProvider>
-            <ThemeProvider theme={theme} components={components}>
+            <ThemeProvider theme={theme}>
                <DraftArticleProvider>
                   <Styled.root>
                      <App />
