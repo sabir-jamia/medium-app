@@ -202,6 +202,15 @@ export default {
             fontWeight: 'bold',
          },
       },
+      navlink: {
+         display: 'inline-block',
+         fontWeight: 'bold',
+         color: 'inherit',
+         textDecoration: 'none',
+         ':hover,:focus': {
+            color: 'primary',
+         },
+      },
    },
    prism: {
       ...prism,

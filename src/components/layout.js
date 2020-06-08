@@ -5,11 +5,11 @@ import GlobalStyle from './global-style';
 import Header from './header';
 import Footer from './footer';
 
-const Layout = ({ children }) => {
+const Layout = ({ mode, setMode, children }) => {
    return (
       <Flex sx={{ flexDirection: 'column', minHeight: '100vh' }}>
          <GlobalStyle />
-         <Header />
+         <Header setMode={setMode} mode={mode} />
          <Flex
             as='main'
             mx='auto'

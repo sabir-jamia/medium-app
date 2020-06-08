@@ -1,7 +1,7 @@
 import React from 'react';
 import { useColorMode } from 'theme-ui';
 
-export default props => {
+function ThemeChanger() {
    const [colorMode, setColorMode] = useColorMode();
    return (
       <header>
@@ -14,4 +14,6 @@ export default props => {
          </button>
       </header>
    );
-};
+}
+
+export default ThemeChanger;

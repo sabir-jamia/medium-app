@@ -1,13 +1,13 @@
 /**@jsx jsx */
 import { jsx } from '@theme-ui/core';
-import { Flex } from '@theme-ui/components';
+import { Flex, Button } from '@theme-ui/components';
 import { Fragment } from 'react';
 import { Link } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
 
 import PrivateNavItems from './private-nav-Items';
 
-function Header() {
+function Header({ setMode, mode }) {
    const auth = useAuth();
    const isLoggedIn = auth.user ? true : false;
 
@@ -23,12 +23,12 @@ function Header() {
             zIndex: '500',
          }}
       >
-         <Flex>
+         <Flex sx={{ minWidth: 0 }}>
             <Link to='/' sx={{ variant: 'links.nav' }}>
                <h2>Medium</h2>
             </Link>
          </Flex>
-         <Flex sx={{ whiteSpace: 'nowrap' }}>
+         <Flex sx={{ whiteSpace: 'nowrap', '& > *': { textAlign: 'center' } }}>
             <Link to='/' sx={{ variant: 'links.nav' }}>
                Home
             </Link>
@@ -44,6 +44,13 @@ function Header() {
             ) : (
                <PrivateNavItems />
             )}
+            <Button
+               variant='links.nav'
+               sx={{ display: 'flex', justifyContent: 'center', px: 3 }}
+               onClick={e => setMode(mode === 'default' ? 'dark' : 'default')}
+            >
+               Toggle {mode === 'default' ? 'Dark' : 'Light'}
+            </Button>
          </Flex>
       </Flex>
    );
