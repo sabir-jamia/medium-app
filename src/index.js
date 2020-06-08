@@ -3,7 +3,7 @@ import ReactDom from 'react-dom';
 import { BrowserRouter } from 'react-router-dom';
 import { ReactQueryConfigProvider } from 'react-query';
 import { ReactQueryDevtools } from 'react-query-devtools';
-import { ThemeProvider } from 'theme-ui';
+import { ThemeProvider, Styled } from 'theme-ui';
 
 import theme from './theme';
 import { DraftArticleProvider } from './context/draft-article';
@@ -26,7 +26,9 @@ ReactDom.render(
          <AuthProvider>
             <ThemeProvider theme={theme} components={components}>
                <DraftArticleProvider>
-                  <App />
+                  <Styled.root>
+                     <App />
+                  </Styled.root>
                </DraftArticleProvider>
             </ThemeProvider>
          </AuthProvider>

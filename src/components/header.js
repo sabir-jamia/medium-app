@@ -49,7 +49,7 @@ function Header({ setMode, mode }) {
                sx={{ display: 'flex', justifyContent: 'center', px: 3 }}
                onClick={e => setMode(mode === 'default' ? 'dark' : 'default')}
             >
-               Toggle {mode === 'default' ? 'Dark' : 'Light'}
+               {mode}
             </Button>
          </Flex>
       </Flex>

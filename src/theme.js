@@ -1,10 +1,86 @@
 import prism from '@theme-ui/prism/presets/theme-ui';
 
 export default {
+   colors: {
+      text: '#000000',
+      background: '#ffffff',
+      primary: '#3333ee',
+      secondary: '#111199',
+      muted: '#f6f6f6',
+      highlight: '#efeffe', // '#ffffcc',
+      gray: '#777777',
+      accent: '#660099',
+      darken: 'rgba(0, 0, 0, .25)',
+      modes: {
+         dark: {
+            text: '#ffffff',
+            background: '#060606',
+            primary: '#33ccff',
+            secondary: '#ee00ff',
+            muted: '#191919',
+            highlight: '#29112c',
+            gray: '#999999',
+            accent: '#cc00ff',
+         },
+         deep: {
+            text: 'hsl(210, 50%, 96%)',
+            background: 'hsl(230, 25%, 18%)',
+            primary: 'hsl(260, 100%, 80%)',
+            secondary: 'hsl(290, 100%, 80%)',
+            highlight: 'hsl(260, 20%, 40%)',
+            accent: 'hsl(290, 100%, 80%)',
+            muted: 'hsla(230, 20%, 0%, 20%)',
+            gray: 'hsl(210, 50%, 60%)',
+         },
+         swiss: {
+            text: 'hsl(10, 20%, 20%)',
+            background: 'hsl(10, 10%, 98%)',
+            primary: 'hsl(10, 80%, 50%)',
+            secondary: 'hsl(10, 60%, 50%)',
+            highlight: 'hsl(10, 40%, 90%)',
+            accent: 'hsl(250, 60%, 30%)',
+            muted: 'hsl(10, 20%, 94%)',
+            gray: 'hsl(10, 20%, 50%)',
+         },
+      },
+   },
    fonts: {
       body: 'system-ui, sans-serif',
       heading: '"Avenir Next", sans-serif',
       monospace: 'Menlo, monospace',
+   },
+   fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
+   fontWeights: {
+      body: 400,
+      heading: 800,
+      bold: 700,
+      display: 800,
+   },
+   lineHeights: {
+      body: 1.5,
+      heading: 1.25,
+   },
+   sizes: {
+      sidebar: 256,
+      container: 1024,
+   },
+   text: {
+      heading: {
+         fontFamily: 'heading',
+         fontWeight: 'heading',
+         lineHeight: 'heading',
+      },
+      display: {
+         variant: 'text.heading',
+         fontSize: [5, 6],
+         fontWeight: 'display',
+         letterSpacing: '-0.03em',
+         mt: 3,
+      },
+      caps: {
+         textTransform: 'uppercase',
+         letterSpacing: '0.2em',
+      },
    },
    buttons: {
       primary: {
@@ -37,56 +113,6 @@ export default {
             cursor: 'no-drop',
             color: '#ccc',
          },
-      },
-   },
-   text: {
-      heading: {
-         fontFamily: 'heading',
-         fontWeight: 'heading',
-         lineHeight: 'heading',
-      },
-      display: {
-         variant: 'text.heading',
-         fontSize: [5, 6],
-         fontWeight: 'display',
-         letterSpacing: '-0.03em',
-         mt: 3,
-      },
-      caps: {
-         textTransform: 'uppercase',
-         letterSpacing: '0.2em',
-      },
-   },
-   badges: {
-      primary: {
-         color: 'background',
-      },
-      highlight: {
-         color: 'text',
-         bg: 'highlight',
-      },
-      accent: {
-         color: 'background',
-         bg: 'accent',
-      },
-      outline: {
-         color: 'primary',
-         bg: 'transparent',
-         boxShadow: 'inset 0 0 0 1px',
-      },
-      circle: {
-         height: 16,
-         minWidth: 16,
-         lineHeight: '16px',
-         textAlign: 'center',
-         borderRadius: 9999,
-      },
-   },
-   cards: {
-      primary: {
-         padding: 2,
-         borderRadius: 4,
-         boxShadow: '0 0 4px 1px rgba(0, 0, 0, 0.5)',
       },
    },
    links: {
@@ -127,38 +153,22 @@ export default {
          },
       },
    },
-   ////////////////////////////necessary///////
-   colors: {
-      text: '#000000',
-      background: '#ffffff',
-      primary: '#3333ee',
-      secondary: '#111199',
-      muted: '#f6f6f6',
-      highlight: '#efeffe', // '#ffffcc',
-      gray: '#777777',
-      accent: '#660099',
-      darken: 'rgba(0, 0, 0, .25)',
-      modes: {
-         dark: {
-            text: '#ffffff',
-            background: '#060606',
-            primary: '#33ccff',
-            secondary: '#ee00ff',
-            muted: '#191919',
-            highlight: '#29112c',
-            gray: '#999999',
-            accent: '#cc00ff',
-         },
+   badges: {
+      primary: {
+         color: 'background',
       },
-   },
-   images: {
-      avatar: {
-         width: 32,
-         height: 32,
+      highlight: {
+         color: 'text',
+         bg: 'highlight',
       },
-      big: {
-         width: 100,
-         height: 100,
+      accent: {
+         color: 'background',
+         bg: 'accent',
+      },
+      outline: {
+         color: 'primary',
+         bg: 'transparent',
+         boxShadow: 'inset 0 0 0 1px',
       },
    },
    forms: {
@@ -183,9 +193,64 @@ export default {
          },
       },
    },
+   layout: {
+      container: {
+         p: 3,
+         // maxWidth: 1024
+      },
+   },
+   images: {
+      avatar: {
+         width: 32,
+         height: 32,
+      },
+      big: {
+         width: 100,
+         height: 100,
+      },
+   },
    styles: {
+      root: {
+         margin: 0,
+         fontFamily: 'body',
+         lineHeight: 'body',
+         fontWeight: 'body',
+      },
       hr: {
-         color: 'rgba(0,0,0,0.3)',
+         color: 'muted',
+      },
+      img: {
+         maxWidth: '100%',
+         height: 'auto',
+      },
+      h1: {
+         variant: 'text.display',
+      },
+      h2: {
+         variant: 'text.heading',
+         fontSize: 5,
+      },
+      h3: {
+         variant: 'text.heading',
+         fontSize: 4,
+      },
+      h4: {
+         variant: 'text.heading',
+         fontSize: 3,
+      },
+      h5: {
+         variant: 'text.heading',
+         fontSize: 2,
+      },
+      h6: {
+         variant: 'text.heading',
+         fontSize: 1,
+      },
+      a: {
+         color: 'primary',
+         '&:hover': {
+            color: 'secondary',
+         },
       },
       pre: {
          fontFamily: 'monospace',
@@ -201,6 +266,49 @@ export default {
          bold: {
             fontWeight: 'bold',
          },
+      },
+      pre: {
+         fontFamily: 'monospace',
+         fontSize: 1,
+         p: 3,
+         color: 'text',
+         bg: 'muted',
+         overflow: 'auto',
+         code: {
+            color: 'inherit',
+         },
+         variant: 'prism',
+      },
+      code: {
+         fontFamily: 'monospace',
+         fontSize: 1,
+      },
+      inlineCode: {
+         fontFamily: 'monospace',
+         color: 'secondary',
+         bg: 'muted',
+      },
+      table: {
+         width: '100%',
+         my: 4,
+         borderCollapse: 'separate',
+         borderSpacing: 0,
+         [['th', 'td']]: {
+            textAlign: 'left',
+            py: '4px',
+            pr: '4px',
+            pl: 0,
+            borderColor: 'muted',
+            borderBottomStyle: 'solid',
+         },
+      },
+      th: {
+         verticalAlign: 'bottom',
+         borderBottomWidth: '2px',
+      },
+      td: {
+         verticalAlign: 'top',
+         borderBottomWidth: '1px',
       },
       navlink: {
          display: 'inline-block',
@@ -269,12 +377,3 @@ export default {
       },
    },
 };
-
-{
-   /* <span
-{...attributes}
-css={css`
-font-weight: ${leaf.bold && 'bold'};
-font-style: ${leaf.italic && 'italic'};
-text-decoration: ${leaf.underlined && 'underline'}; */
-}

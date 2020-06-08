@@ -15,7 +15,12 @@ function ArticleMeta({ author, createdAt }) {
             <Avatar src={author.image} />
          </Link>
          <Flex sx={{ flexDirection: 'column' }} ml={2}>
-            <Link to={`/profiles/${author.username}`}>{author.username}</Link>
+            <Link
+               to={`/profiles/${author.username}`}
+               sx={{ variant: 'styles.navlink' }}
+            >
+               {author.username}
+            </Link>
             <Text sx={{ fontSize: '0.8rem' }}>
                {getFormattedDate(createdAt)}
             </Text>

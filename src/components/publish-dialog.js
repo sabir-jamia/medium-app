@@ -49,7 +49,7 @@ function PublishDialog({ onClose }) {
                bottom: 0,
                right: 0,
                zIndex: 900,
-               backgroundColor: '#fff',
+               backgroundColor: 'background',
                width: '100%',
             }}
          >

@@ -44,20 +44,16 @@ function ArticleList({ articles }) {
                />
             </Flex>
             <Flex mt={2}>
-               <Link to={`/articles/${article.slug}`}>
+               <Link
+                  to={`/articles/${article.slug}`}
+                  sx={{ variant: 'styles.navlink' }}
+               >
                   <Heading as='h3'>
                      {article.title.length > 25
                         ? `${article.title.substr(0, 25)}...`
                         : article.title}{' '}
                   </Heading>
-                  <Text
-                     as='p'
-                     sx={{
-                        mb: 3,
-                        color: '#ccc',
-                        fontWeight: 300,
-                     }}
-                  >
+                  <Text as='p' sx={{ mb: 3, fontWeight: 300 }}>
                      {article.description?.length > 25
                         ? `${article.description.substr(0, 25)}...`
                         : article.description}
@@ -65,14 +61,7 @@ function ArticleList({ articles }) {
                </Link>
             </Flex>
             <Flex sx={{ justifyContent: 'space-between' }}>
-               <Text
-                  as='p'
-                  sx={{
-                     color: '#aaa',
-                     fontSize: '0.8rem',
-                     fontWeight: 300,
-                  }}
-               >
+               <Text as='p' sx={{ fontSize: '0.8rem', fontWeight: 300 }}>
                   Read more...
                </Text>
                <TagList tags={article.tagList} />

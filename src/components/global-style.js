@@ -9,11 +9,6 @@ function GlobalStyle() {
                height: 100%;
                margin: 0;
                padding: 0;
-               font-size: 1rem;
-               line-height: 1.4;
-               font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI',
-                  Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
-                  'Helvetica Neue', sans-serif;
             }
             *,
             *::after,
@@ -32,11 +27,6 @@ function GlobalStyle() {
             .content-width {
                max-width: 680px;
                width: 100%;
-            }
-            a {
-               color: #000;
-               text-decoration: none;
-               cursor: pointer;
             }
          `}
       ></Global>

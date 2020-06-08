@@ -5,7 +5,11 @@ import { Fragment } from 'react';
 
 const Tabs = ({ children, tabs, tabNames, onTabChange, selectedTab }) => (
    <Fragment>
-      <Box mt={4} py={3} sx={{ borderBottom: '1px solid rgba(0, 0, 0, 0.3)' }}>
+      <Box
+         mt={4}
+         py={3}
+         sx={{ borderBottom: t => `1px solid ${t.colors.muted}` }}
+      >
          {tabs.map(tab => (
             <a
                key={tab}
