@@ -42,7 +42,7 @@ export function sendRequest({
             });
             return Promise.reject(new Error(JSON.stringify(errors)));
          } else if (response.error) {
-            return Promise.reject(new Error(response.error));
+            return Promise.reject(new Error(JSON.stringify([response.error])));
          } else {
             return response;
          }

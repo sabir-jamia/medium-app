@@ -16,7 +16,7 @@ function reducer(state, action) {
    }
 
    if (action.type == 'ERROR') {
-      return { ...state, errors: [action.error.message] };
+      return { ...state, errors: JSON.parse(action.error.message) };
    }
 
    return state;
