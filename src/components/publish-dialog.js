@@ -9,10 +9,9 @@ import {
    Button,
 } from '@theme-ui/components';
 import { useState } from 'react';
-import { css } from '@emotion/core';
 import { useDraftArticle } from '../context/draft-article';
 import useCreateArticle from '../hooks/use-create-article';
-import { useHistory } from 'react-router-dom';
+import { useHistory, useLocation } from 'react-router-dom';
 import Portal from './portal';
 
 function PublishDialog({ onClose }) {
@@ -22,9 +21,11 @@ function PublishDialog({ onClose }) {
    const [tags, setTags] = useState(article.tagList?.join(','));
    const [mutate] = useCreateArticle();
    const history = useHistory();
+   const { state } = useLocation();
 
    const handleSubmit = event => {
       event.preventDefault();
+      const redirectUrl = state?.referrer ?? '/';
 
       mutate({
          slug: article.slug,
@@ -33,7 +34,7 @@ function PublishDialog({ onClose }) {
          body: article.body,
          tagList: tags.split(',').map(tag => tag.trim()),
       }).then(() => {
-         history.push('/');
+         history.push(redirectUrl);
          onClose();
          console.log('SUCCESSFULL');
       });

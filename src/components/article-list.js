@@ -2,7 +2,7 @@
 import { jsx } from '@theme-ui/core';
 import { Flex, Heading, Text, Divider } from '@theme-ui/components';
 import { Fragment } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, useLocation } from 'react-router-dom';
 
 import useMutateFavorite from '../hooks/use-mutate-favorite';
 import { useRequireLoggedin } from '../hooks/use-require-loggedin';
@@ -14,6 +14,7 @@ import TagList from './tag-list';
 function ArticleList({ articles }) {
    const loggedinOnly = useRequireLoggedin();
    const [mutateFavorite] = useMutateFavorite();
+   const { pathname: currentPath } = useLocation();
 
    const handleFavorite = article => {
       const mutationArgs = { slug: article.slug, favorited: article.favorited };
@@ -45,7 +46,10 @@ function ArticleList({ articles }) {
             </Flex>
             <Flex mt={2}>
                <Link
-                  to={`/articles/${article.slug}`}
+                  to={{
+                     pathname: `/articles/${article.slug}`,
+                     state: { referrer: currentPath },
+                  }}
                   sx={{ variant: 'styles.navlink' }}
                >
                   <Heading as='h3'>

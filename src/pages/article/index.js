@@ -1,5 +1,5 @@
 import React from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory, useLocation } from 'react-router-dom';
 
 import useArticle from '../../hooks/use-article';
 import useMutateFavorite from '../../hooks/use-mutate-favorite';
@@ -23,6 +23,7 @@ function ArticlePage() {
    const [createComment] = useCreateComment();
    const [deleteComment] = useDeleteComment();
    const loggedinOnly = useRequireLoggedin();
+   const { state } = useLocation();
 
    const handleFavorite = () => {
       return loggedinOnly(
@@ -43,7 +44,8 @@ function ArticlePage() {
    };
 
    const handleEdit = () => {
-      history.push(`/article/edit/${slug}`);
+      const referrer = state?.referrer ?? '/';
+      history.push({ pathname: `/article/edit/${slug}`, state: { referrer } });
       return Promise.resolve('');
    };
 
