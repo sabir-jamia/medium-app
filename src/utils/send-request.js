@@ -33,7 +33,16 @@ export function sendRequest({
       .then(response => response.json())
       .then(response => {
          if (response.errors) {
-            return Promise.reject(JSON.stringify(response.errors));
+            const errors = [];
+            Object.entries(response.errors).map(([key, val]) => {
+               const value = Array.isArray(val)
+                  ? val.reduce((acc, v) => acc + v, '')
+                  : val;
+               errors.push(`${key} ${value}`);
+            });
+            return Promise.reject(new Error(JSON.stringify(errors)));
+         } else if (response.error) {
+            return Promise.reject(new Error(response.error));
          } else {
             return response;
          }

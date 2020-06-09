@@ -19,7 +19,6 @@ function LoginPage() {
          { email, password },
          {
             onSuccess: response => {
-               console.log({ response });
                localStorage.setItem('jwt-token', response.token);
                history.push('/');
             },
