@@ -2,9 +2,10 @@ import { useQuery, usePaginatedQuery } from 'react-query';
 import { sendRequest } from '../utils/send-request';
 
 function getArtilces(key, { page, ...rest } = {}) {
-   const pathname = `articles`;
+   const pathname = 'articles';
+   const limit = process.env.PAGE_LIMIT;
    const params = page
-      ? { ...rest, limit: 10, offset: 10 * (page - 1) }
+      ? { ...rest, limit, offset: limit * (page - 1) }
       : { ...rest };
 
    return sendRequest({ pathname, params }).then(response => response);

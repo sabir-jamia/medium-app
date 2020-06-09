@@ -7,7 +7,7 @@ export function sendRequest({
    const undefinedPredicate = ([, value]) => value != undefined;
    const filterdParams = Object.entries(params).filter(undefinedPredicate);
    const paramString = String(new URLSearchParams(filterdParams));
-   const apiUrl = `https://conduit.productionready.io/api/${pathname}?${paramString}`;
+   const apiUrl = `${process.env.API_URL}/${pathname}?${paramString}`;
    const token = localStorage.getItem('jwt-token');
 
    console.log({ apiUrl });

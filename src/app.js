@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { Suspense } from 'react';
 
 import Layout from './components/layout';
 import AppRoutes from './app-routes';
@@ -37,9 +37,11 @@ function App() {
    ) : status == 'error' ? (
       <span>Error: {error.message}</span>
    ) : (
-      <Layout mode={getModeName(mode)} setMode={cycleMode}>
-         <AppRoutes />
-      </Layout>
+      <Suspense fallback={'Loading page...'}>
+         <Layout mode={getModeName(mode)} setMode={cycleMode}>
+            <AppRoutes />
+         </Layout>
+      </Suspense>
    );
 }
 

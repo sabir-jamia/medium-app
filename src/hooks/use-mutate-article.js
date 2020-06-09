@@ -2,7 +2,7 @@ import { useMutation, queryCache } from 'react-query';
 import { sendRequest } from '../utils/send-request';
 
 function DeleteArticle({ slug }) {
-   const pathname = `/articles/${slug}`;
+   const pathname = `articles/${slug}`;
    const method = 'DELETE';
 
    return sendRequest({ pathname, method });

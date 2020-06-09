@@ -2,7 +2,7 @@ import { useMutation, queryCache } from 'react-query';
 import { sendRequest } from '../utils/send-request';
 
 function followAuthor({ username, following }) {
-   const pathname = `/profiles/${username}/follow`;
+   const pathname = `profiles/${username}/follow`;
    const method = following == false ? 'POST' : 'DELETE';
 
    return sendRequest({ pathname, method }).then(response => {

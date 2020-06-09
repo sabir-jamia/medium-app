@@ -2,7 +2,7 @@ import { useMutation, queryCache } from 'react-query';
 import { sendRequest } from '../utils/send-request';
 
 function favoriteArticle({ slug, favorited }) {
-   const pathname = `/articles/${slug}/favorite`;
+   const pathname = `articles/${slug}/favorite`;
    const method = favorited == false ? 'POST' : 'DELETE';
 
    return sendRequest({ pathname, method }).then(response => {

@@ -1,5 +1,5 @@
-import React, { Suspense, lazy } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import React, { lazy } from 'react';
+import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/home';
 import LoginPage from './pages/login';
@@ -10,8 +10,10 @@ const EditArticlePage = lazy(() => import('./pages/edit-article'));
 const ProfilePage = lazy(() => import('./pages/profile'));
 const ArticlePage = lazy(() => import('./pages/article'));
 
-const AppRoutes = () => (
-   <Suspense fallback={'Loading app...'}>
+const AppRoutes = () => {
+   const location = useLocation();
+
+   return (
       <Switch>
          <Route exact path='/'>
             <HomePage />
@@ -34,8 +36,11 @@ const AppRoutes = () => (
          <Route path='/article/edit/:slug'>
             <EditArticlePage />
          </Route>
+         <Route path='*'>
+            <Redirect to={{ ...location, state: { from: '404' } }} />
+         </Route>
       </Switch>
-   </Suspense>
-);
+   );
+};
 
 export default AppRoutes;
