@@ -20,7 +20,7 @@ function FavArticles({ page, favoritedBy, dispatch }) {
          <ArticleList articles={resolvedData.articles} />
          <Pagination
             currentPage={page}
-            pages={resolvedData.articlesCount / 10}
+            pages={Math.ceil(resolvedData.articlesCount / 10)}
             onPageChange={page => dispatch({ type: 'PAGE_CHANGE', page })}
          />
       </Fragment>

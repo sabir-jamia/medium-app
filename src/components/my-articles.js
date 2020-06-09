@@ -16,7 +16,7 @@ function MyArticles({ page, author, dispatch }) {
          {resolvedData.articlesCount > 10 && (
             <Pagination
                currentPage={page}
-               pages={resolvedData.articlesCount / 10}
+               pages={Math.ceil(resolvedData.articlesCount / 10)}
                onPageChange={page => dispatch({ type: 'PAGE_CHANGE', page })}
             />
          )}

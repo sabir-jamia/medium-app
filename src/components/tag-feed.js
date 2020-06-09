@@ -18,7 +18,7 @@ function TagFeed({ tag, page, onPageChange }) {
             <Pagination
                currentPage={page}
                onPageChange={onPageChange}
-               pages={resolvedData.articlesCount / 10}
+               pages={Math.ceil(resolvedData.articlesCount / 10)}
             />
          )}
       </Fragment>

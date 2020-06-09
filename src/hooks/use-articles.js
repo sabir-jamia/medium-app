@@ -20,7 +20,10 @@ function useAuthorArticles({ author, page }) {
 }
 
 function useFavArticles({ favoritedBy, page }) {
-   return usePaginatedQuery(['articles', { favoritedBy, page }], getArtilces);
+   return usePaginatedQuery(
+      ['articles', { favorited: favoritedBy, page }],
+      getArtilces
+   );
 }
 
 function useTagArticles({ page, tag }) {
