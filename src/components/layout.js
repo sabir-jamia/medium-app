@@ -27,6 +27,7 @@ const Layout = ({ mode, setMode, children }) => {
                      minHeight: 'calc(100vh - 128px)',
                      width: '100%',
                      maxWidth: 1140,
+                     px: 3,
                   }}
                >
                   {children}

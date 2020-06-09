@@ -3,6 +3,7 @@ function init() {
       username: '',
       email: '',
       password: '',
+      errors: [],
    };
 }
 
@@ -17,6 +18,10 @@ function reducer(state, action) {
 
    if (action.type == 'SET_USERNAME') {
       return { ...state, username: action.username };
+   }
+
+   if (action.type == 'ERROR') {
+      return { ...state, errors: [action.error] };
    }
 
    return state;

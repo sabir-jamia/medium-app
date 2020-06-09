@@ -51,7 +51,7 @@ function Article({
                isMyArticle={isMyArticle}
             />
             <ArticleComment
-               onComment={handleCreateComment}
+               onCreate={handleCreateComment}
                onDelete={handleDeleteComment}
                isMyArticle={isMyArticle}
             />

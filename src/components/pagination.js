@@ -12,14 +12,18 @@ function Pagination({ currentPage, onPageChange, pages }) {
                '& > li': {
                   display: 'inline-block',
                   listStyle: 'none',
-                  p: '0.5rem 0.75rem',
                   border: '1px solid #ddd',
                },
             }}
          >
             {Array.from({ length: pages }, (_, key) => key + 1).map(page => (
                <li key={page}>
-                  <a onClick={() => onPageChange(page)}>{page}</a>
+                  <a
+                     onClick={() => onPageChange(page)}
+                     sx={{ variant: 'styles.navlink', p: '0.5rem 0.75rem' }}
+                  >
+                     {page}
+                  </a>
                </li>
             ))}
          </ul>

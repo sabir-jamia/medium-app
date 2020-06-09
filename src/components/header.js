@@ -14,8 +14,8 @@ function Header({ setMode, mode }) {
    return (
       <Flex
          as='header'
-         px={4}
          sx={{
+            p: 3,
             height: 64,
             alignItems: 'center',
             justifyContent: 'space-between',

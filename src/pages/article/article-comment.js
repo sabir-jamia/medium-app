@@ -5,14 +5,15 @@ import {
    Box,
    Textarea,
    Button,
-   IconButton,
    Avatar,
    Text,
 } from '@theme-ui/components';
 import { useState, Fragment } from 'react';
 import { useParams, Link } from 'react-router-dom';
+
 import { useComment } from '../../hooks/use-comment';
 import { getFormattedDate } from '../../utils/format-date';
+import IconButton from '../../components/icon-button';
 
 function ArticleComment({ isMyArticle, onCreate, onDelete }) {
    const { slug } = useParams();
@@ -27,33 +28,38 @@ function ArticleComment({ isMyArticle, onCreate, onDelete }) {
 
    return (
       <Fragment>
-         <Box as='form' sx={{ width: '50%' }} mb={3} onSubmit={handleSubmit}>
-            <Box>
-               <Textarea
-                  rows={4}
-                  placeholder='Write a comment...'
-                  value={comment}
-                  onChange={e => setComment(e.target.value)}
-                  sx={{
-                     borderBottom: 0,
-                     borderBottomRightRadius: 0,
-                     borderBottomLeftRadius: 0,
-                  }}
-               />
-            </Box>
-            <Flex
-               sx={{
-                  justifyContent: 'space-between',
-                  borderColor: 'gray',
-                  borderWidth: '1px',
-                  borderBottomLeftRadius: '4px',
-                  borderBottomRightRadius: '4px',
-                  bg: 'gray',
-                  p: 2,
-               }}
-            >
+         <Box
+            as='form'
+            sx={{
+               border: t => `1px solid ${t.colors.muted}`,
+               borderRadius: '4px',
+               width: '50%',
+            }}
+            mb={3}
+            onSubmit={handleSubmit}
+         >
+            <Textarea
+               rows={3}
+               placeholder='Write a comment...'
+               value={comment}
+               onChange={e => setComment(e.target.value)}
+               sx={{ border: 'none' }}
+            />
+            <Flex sx={{ justifyContent: 'space-between', bg: 'muted', p: 2 }}>
                <Avatar />
-               <Button type='submit'>Post Comment</Button>
+               <Button
+                  sx={{
+                     p: 2,
+                     width: 'auto',
+                     bg: 'background',
+                     color: 'primary',
+                  }}
+                  type='submit'
+               >
+                  <Text sx={{ fontSize: '14px', fontWeight: 'normal' }}>
+                     Post Comment
+                  </Text>
+               </Button>
             </Flex>
          </Box>
          {status == 'loading' ? (
@@ -75,14 +81,21 @@ function CommentBox({ comments, onDelete, isMyArticle }) {
    return comments.map(comment => (
       <Box
          key={comment.id}
-         sx={{ border: '1px solid gray', borderRadius: '4px', width: '50%' }}
+         sx={{
+            border: t => `1px solid ${t.colors.muted}`,
+            borderRadius: '4px',
+            width: '50%',
+         }}
          mb={3}
       >
          <p sx={{ p: 3 }}>{comment.body}</p>
-         <Flex sx={{ justifyContent: 'space-between', bg: 'gray', p: 2 }}>
+         <Flex sx={{ justifyContent: 'space-between', bg: 'muted', p: 2 }}>
             <Flex>
                <Avatar src={comment.author.image} />
-               <Link to={`/profiles/${comment.author.username}`} sx={{ ml: 2 }}>
+               <Link
+                  to={`/profiles/${comment.author.username}`}
+                  sx={{ ml: 2, variant: 'styles.navlink' }}
+               >
                   {comment.author.username}
                </Link>
                <Text as='p' ml={2}>
@@ -91,11 +104,10 @@ function CommentBox({ comments, onDelete, isMyArticle }) {
             </Flex>
             {isMyArticle && (
                <IconButton
-                  sx={{ border: 'none' }}
+                  icon='delete'
+                  noBorder
                   onClick={() => onDelete(comment.id)}
-               >
-                  <span className='material-icons'>delete</span>
-               </IconButton>
+               />
             )}
          </Flex>
       </Box>

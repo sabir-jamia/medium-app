@@ -6,7 +6,7 @@ export default {
       background: '#ffffff',
       primary: '#3333ee',
       secondary: '#111199',
-      muted: '#f6f6f6',
+      muted: '#f5f5f5',
       highlight: '#efeffe', // '#ffffcc',
       gray: '#777777',
       accent: '#660099',

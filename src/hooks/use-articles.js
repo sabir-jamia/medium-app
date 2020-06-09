@@ -23,8 +23,8 @@ function useFavArticles({ favoritedBy, page }) {
    return usePaginatedQuery(['articles', { favoritedBy, page }], getArtilces);
 }
 
-function useTagArticles(tag) {
-   return useQuery(['articles', { tag }], getArtilces);
+function useTagArticles({ page, tag }) {
+   return usePaginatedQuery(['articles', { page, tag }], getArtilces);
 }
 
 export { useArticles, useAuthorArticles, useFavArticles, useTagArticles };

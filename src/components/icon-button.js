@@ -3,7 +3,13 @@ import { jsx } from '@theme-ui/core';
 import { useRef } from 'react';
 import { IconButton } from '@theme-ui/components';
 
-function MyIconButton({ icon, content, onClick, filled }) {
+function MyIconButton({
+   icon,
+   content = '',
+   onClick,
+   filled,
+   noBorder = false,
+}) {
    const btn = useRef();
 
    return (
@@ -16,6 +22,7 @@ function MyIconButton({ icon, content, onClick, filled }) {
          }}
          ref={btn}
          sx={{
+            border: noBorder ? 0 : '',
             p: 2,
             width: 'auto',
             bg: t => (filled ? t.colors.primary : '#fff'),

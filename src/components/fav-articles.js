@@ -12,7 +12,7 @@ function FavArticles({ page, favoritedBy, dispatch }) {
    });
 
    return status == 'loading' ? (
-      <span>Loading favorite articles...'</span>
+      <span>Loading favorite articles...</span>
    ) : status == 'error' ? (
       <span>Error: {error.message}</span>
    ) : (

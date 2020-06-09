@@ -15,14 +15,28 @@ function Register() {
 
    const handleSubmit = event => {
       event.preventDefault();
-      mutate(state).then(response => {
-         localStorage.setItem('jwt-token', response.token);
-         history.push('/');
-      });
+      mutate(
+         { email, password, username },
+         {
+            onSuccess: response => {
+               localStorage.setItem('jwt-token', response.token);
+               history.push('/');
+            },
+            onError: error => {
+               dispatch({
+                  type: 'ERROR',
+                  error: error,
+               });
+            },
+         }
+      );
    };
 
    return (
       <Box className='content-width' m={4} bg='muted' p={5}>
+         {state.errors.map(error => (
+            <li key={error}>{error}</li>
+         ))}
          <Flex
             as='form'
             sx={{

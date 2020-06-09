@@ -2,6 +2,7 @@ function init() {
    return {
       email: '',
       password: '',
+      errors: [],
    };
 }
 
@@ -12,6 +13,10 @@ function reducer(state, action) {
 
    if (action.type == 'SET_PASSWORD') {
       return { ...state, password: action.password };
+   }
+
+   if (action.type == 'ERROR') {
+      return { ...state, errors: [action.error] };
    }
 
    return state;

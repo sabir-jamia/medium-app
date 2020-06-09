@@ -24,6 +24,7 @@ function ArticlePage() {
    const [deleteComment] = useDeleteComment();
    const loggedinOnly = useRequireLoggedin();
    const { state } = useLocation();
+   const referrer = state?.referrer ?? '/';
 
    const handleFavorite = () => {
       return loggedinOnly(
@@ -44,7 +45,6 @@ function ArticlePage() {
    };
 
    const handleEdit = () => {
-      const referrer = state?.referrer ?? '/';
       history.push({ pathname: `/article/edit/${slug}`, state: { referrer } });
       return Promise.resolve('');
    };
@@ -54,7 +54,7 @@ function ArticlePage() {
          { slug },
          {
             onSuccess: () => {
-               history.push('/');
+               history.push(referrer);
             },
          }
       );

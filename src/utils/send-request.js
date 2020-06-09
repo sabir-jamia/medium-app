@@ -29,7 +29,13 @@ export function sendRequest({
       requestOptions.body = JSON.stringify(body);
    }
 
-   return fetch(String(apiUrl), requestOptions).then(response =>
-      response.json()
-   );
+   return fetch(String(apiUrl), requestOptions)
+      .then(response => response.json())
+      .then(response => {
+         if (response.errors) {
+            return Promise.reject(JSON.stringify(response.errors));
+         } else {
+            return response;
+         }
+      });
 }

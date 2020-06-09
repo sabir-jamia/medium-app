@@ -32,7 +32,7 @@ function PublishDialog({ onClose }) {
          title,
          description,
          body: article.body,
-         tagList: tags.split(',').map(tag => tag.trim()),
+         tagList: tags?.split(',').map(tag => tag.trim()),
       }).then(() => {
          history.push(redirectUrl);
          onClose();
