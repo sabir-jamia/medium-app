@@ -2,7 +2,7 @@
 import { jsx } from 'theme-ui';
 import { Button, IconButton } from '@theme-ui/components';
 import { useState, Fragment } from 'react';
-import { Link, Route, Switch, useHistory } from 'react-router-dom';
+import { Link, Route, Switch, useHistory, NavLink } from 'react-router-dom';
 import { queryCache } from 'react-query';
 
 import PublishDialog from '../components/publish-dialog';
@@ -23,8 +23,10 @@ function PrivateNavItems() {
          <Switch>
             <Route path={['/article/create', '/article/edit']}>
                <Button
+                  variant='links.nav'
                   onClick={() => setShowPublish(true)}
-                  sx={{ variant: 'links.nav', bg: 'muted', px: 10 }}
+                  sx={{ display: 'flex', justifyContent: 'center' }}
+                  bg='muted'
                >
                   Publish
                </Button>
@@ -35,14 +37,18 @@ function PrivateNavItems() {
                </Link>
             </Route>
          </Switch>
-         <Link
+         <NavLink
             to={`/profiles/${loggedInUser.username}`}
             sx={{ variant: 'links.nav' }}
+            activeClassName='active'
          >
             {loggedInUser.username}
-         </Link>
-         <IconButton onClick={() => handleLogout()} sx={{ border: 'none' }}>
-            <span className='material-icons'>power_settings_new</span>
+         </NavLink>
+         <IconButton
+            onClick={() => handleLogout()}
+            sx={{ border: 'none', ml: 1 }}
+         >
+            <span className='material-icons'>logout</span>
          </IconButton>
          {showPublish && (
             <PublishDialog onClose={() => setShowPublish(false)} />
