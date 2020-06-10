@@ -15,6 +15,7 @@ const Tabs = ({ children, tabs, tabNames, onTabChange, selectedTab }) => (
                key={tab}
                sx={{
                   p: '1rem',
+                  cursor: 'pointer',
                   color: 'primary',
                   borderBottom: t =>
                      tab == selectedTab
