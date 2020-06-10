@@ -2,7 +2,7 @@ const { useQuery } = require('react-query');
 
 export function useArticleContent(slug) {
    const getContent = (key, { slug }) =>
-      fetch('http://localhost:8888/api/get-article', {
+      fetch('https://conduent.netlify.app/api/get-article', {
          body: JSON.stringify({ slug }),
          method: 'POST',
       }).then(response => response.text());
