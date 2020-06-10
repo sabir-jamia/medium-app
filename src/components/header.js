@@ -1,6 +1,7 @@
 /**@jsx jsx */
 import { jsx } from '@theme-ui/core';
-import { Flex, Button } from '@theme-ui/components';
+import { Flex } from '@theme-ui/components';
+import Button from './button';
 import { Fragment } from 'react';
 import { Link, NavLink } from 'react-router-dom';
 import { useAuth } from '../hooks/use-auth';
@@ -20,10 +21,11 @@ function Header({ setMode, mode }) {
             alignItems: 'center',
             boxShadow: '0 4px 12px 0 rgba(0, 0, 0, 0.05)',
             zIndex: '500',
+            justifyContent: 'space-between',
          }}
       >
-         <Flex sx={{ flex: 3 }}>
-            <Link to='/' sx={{ variant: 'links.nav', width: 'auto' }}>
+         <Flex>
+            <Link to='/' sx={{ variant: 'links.nav' }}>
                <h2>Medium</h2>
             </Link>
          </Flex>
@@ -31,7 +33,6 @@ function Header({ setMode, mode }) {
             sx={{
                whiteSpace: 'nowrap',
                '& > *': { textAlign: 'center', ml: 1 },
-               flex: 2,
             }}
          >
             <NavLink

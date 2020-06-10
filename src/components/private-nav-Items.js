@@ -1,9 +1,10 @@
 /**@jsx jsx */
 import { jsx } from 'theme-ui';
-import { Button, IconButton } from '@theme-ui/components';
+import { IconButton } from '@theme-ui/components';
 import { useState, Fragment } from 'react';
 import { Link, Route, Switch, useHistory, NavLink } from 'react-router-dom';
 import { queryCache } from 'react-query';
+import Button from './button';
 
 import PublishDialog from '../components/publish-dialog';
 
@@ -23,10 +24,8 @@ function PrivateNavItems() {
          <Switch>
             <Route path={['/article/create', '/article/edit']}>
                <Button
-                  variant='links.nav'
                   onClick={() => setShowPublish(true)}
-                  sx={{ display: 'flex', justifyContent: 'center' }}
-                  bg='muted'
+                  sx={{ variant: 'links.nav', ml: 2, bg: 'muted' }}
                >
                   Publish
                </Button>
