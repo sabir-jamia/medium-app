@@ -4,7 +4,6 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "prebuild": "cd functions && npm i",
       "start": "webpack-dev-server",
       "dev": "webpack --env.NODE_ENV=development",
       "build": "webpack"
