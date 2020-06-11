@@ -4,6 +4,7 @@ const { renderToStaticMarkup } = require('react-dom/server');
 const mdx = require('@mdx-js/mdx');
 const { MDXProvider, mdx: createElement } = require('@mdx-js/react');
 require('@babel/preset-react');
+
 const transform = code =>
    babel.transformSync(code, {
       presets: ['@babel/preset-react'],
