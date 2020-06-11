@@ -13,6 +13,7 @@
    "author": "",
    "license": "ISC",
    "dependencies": {
+      "@babel/plugin-transform-react-jsx": "^7.10.1",
       "@emotion/core": "^10.0.28",
       "@mdx-js/mdx": "^1.6.5",
       "@theme-ui/presets": "^0.3.0",
