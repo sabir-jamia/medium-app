@@ -6,15 +6,10 @@ const Webpack = require('webpack');
 const dotenv = require('dotenv');
 
 module.exports = {
-   mode: process.env.NODE_ENV,
+   mode: 'production',
    module: {
       rules: [
          { test: /\.js$/, exclude: /(node_modules)/, use: 'babel-loader' },
-         {
-            test: /\.mdx$/,
-            exclude: /(node_modules)/,
-            use: ['babel-loader', '@mdx-js/loader'],
-         },
       ],
    },
    devServer: {
