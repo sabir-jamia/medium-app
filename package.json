@@ -5,6 +5,7 @@
    "main": "index.js",
    "scripts": {
       "start": "webpack-dev-server",
+      "func:zip": "node scripts/func-zip.js",
       "dev": "webpack --env.NODE_ENV=development",
       "build": "webpack"
    },
@@ -12,6 +13,7 @@
    "author": "",
    "license": "ISC",
    "dependencies": {
+      "@babel/plugin-transform-react-jsx": "^7.10.1",
       "@emotion/core": "^10.0.28",
       "@mdx-js/mdx": "^1.6.5",
       "@theme-ui/presets": "^0.3.0",
@@ -30,6 +32,7 @@
       "@babel/preset-env": "^7.10.1",
       "@babel/preset-react": "^7.10.1",
       "@emotion/babel-preset-css-prop": "^10.0.27",
+      "@netlify/zip-it-and-ship-it": "^1.2.0",
       "babel-loader": "^8.1.0",
       "css-loader": "^3.5.3",
       "dotenv": "^8.2.0",

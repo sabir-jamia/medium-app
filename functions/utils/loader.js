@@ -3,13 +3,10 @@ const babel = require('@babel/core');
 const { renderToStaticMarkup } = require('react-dom/server');
 const mdx = require('@mdx-js/mdx');
 const { MDXProvider, mdx: createElement } = require('@mdx-js/react');
-
+require('@babel/preset-react');
 const transform = code =>
    babel.transformSync(code, {
-      plugins: [
-         '@babel/plugin-proposal-object-rest-spread',
-         '@babel/plugin-transform-react-jsx',
-      ],
+      presets: ['@babel/preset-react'],
    }).code;
 
 module.exports = async mdxCode => {
