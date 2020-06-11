@@ -5,7 +5,7 @@ const mdx = require('@mdx-js/mdx');
 const { MDXProvider, mdx: createElement } = require('@mdx-js/react');
 
 const transform = code =>
-   babel.transform(code, {
+   babel.transformSync(code, {
       plugins: [
          '@babel/plugin-transform-react-jsx',
          '@babel/plugin-proposal-object-rest-spread',
