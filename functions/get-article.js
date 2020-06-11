@@ -1,3 +1,4 @@
+require('dotenv').config();
 const axios = require('axios');
 const renderWithReact = require('./utils/loader');
 
