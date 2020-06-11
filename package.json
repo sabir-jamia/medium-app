@@ -4,8 +4,7 @@
    "description": "",
    "main": "index.js",
    "scripts": {
-      "postinstall": "netlify-lambda install",
-      "prebuild": "cd functions && yarn install",
+      "prebuild": "cd functions && npm i",
       "start": "webpack-dev-server",
       "dev": "webpack --env.NODE_ENV=development",
       "build": "webpack --env.NODE_ENV=production"
