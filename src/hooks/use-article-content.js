@@ -1,9 +1,9 @@
 const { useQuery } = require('react-query');
 
-export function useArticleContent(slug) {
-   const getContent = (key, { slug }) =>
+export function useArticleContent({ content, slug }) {
+   const getContent = () =>
       fetch('/api/get-article', {
-         body: JSON.stringify({ slug }),
+         body: JSON.stringify({ content }),
          method: 'POST',
       }).then(response => response.text());
 

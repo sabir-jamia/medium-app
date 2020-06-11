@@ -15,8 +15,6 @@
       "@babel/plugin-transform-react-jsx": "^7.10.1",
       "@mdx-js/mdx": "^1.6.5",
       "@mdx-js/react": "^1.6.5",
-      "axios": "^0.19.2",
-      "dotenv": "^8.2.0",
       "react": "^16.13.1",
       "react-dom": "^16.13.1"
    }

@@ -6,7 +6,10 @@ import Prism from '@theme-ui/prism';
 import { useArticleContent } from '../../hooks/use-article-content';
 
 function ArticleBody({ article }) {
-   const { status, data, error } = useArticleContent(article.slug);
+   const { status, data, error } = useArticleContent({
+      slug: article.slug,
+      content: article.body,
+   });
    const markup = { __html: data };
 
    return status == 'loading' ? (
