@@ -2,7 +2,7 @@ const React = require('react');
 const babel = require('@babel/core');
 const { renderToStaticMarkup } = require('react-dom/server');
 const mdx = require('@mdx-js/mdx');
-const { MDXProvider, mdx: createElement } = require('@mdx-js/react');
+const { mdx: createElement } = require('@mdx-js/react');
 const jsxTransformer = require('@babel/plugin-transform-react-jsx');
 
 const transform = code =>
@@ -24,7 +24,5 @@ module.exports = async mdxCode => {
 
    const element = fn(React, ...Object.values(scope));
 
-   const elementWithProvider = React.createElement(MDXProvider, {}, element);
-
-   return renderToStaticMarkup(elementWithProvider);
+   return renderToStaticMarkup(element);
 };
