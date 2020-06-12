@@ -29,6 +29,22 @@ function GlobalStyle() {
                width: 100%;
             }
          `}
+         styles={t => ({
+            pre: {
+               fontFamily: 'monospace',
+               fontSize: 12,
+               padding: 8,
+               color: t.colors.text,
+               background: t.colors.muted,
+               overflow: 'auto',
+               code: {
+                  color: 'inherit',
+               },
+               bold: {
+                  fontWeight: 'bold',
+               },
+            },
+         })}
       ></Global>
    );
 }

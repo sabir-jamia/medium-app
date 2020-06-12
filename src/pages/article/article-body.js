@@ -1,8 +1,7 @@
 /**@jsx jsx */
 import { jsx } from '@theme-ui/core';
-import { Box, Text, Flex } from '@theme-ui/components';
+import { Box, Flex } from '@theme-ui/components';
 import TagList from '../../components/tag-list';
-import Prism from '@theme-ui/prism';
 import { useArticleContent } from '../../hooks/use-article-content';
 
 function ArticleBody({ article }) {

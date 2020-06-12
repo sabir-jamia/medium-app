@@ -1,5 +1,3 @@
-import prism from '@theme-ui/prism/presets/theme-ui';
-
 export default {
    colors: {
       text: '#000000',
@@ -252,42 +250,6 @@ export default {
             color: 'secondary',
          },
       },
-      pre: {
-         fontFamily: 'monospace',
-         fontSize: 1,
-         p: 3,
-         color: 'text',
-         bg: 'muted',
-         overflow: 'auto',
-         code: {
-            color: 'inherit',
-         },
-         variant: 'prism',
-         bold: {
-            fontWeight: 'bold',
-         },
-      },
-      pre: {
-         fontFamily: 'monospace',
-         fontSize: 1,
-         p: 3,
-         color: 'text',
-         bg: 'muted',
-         overflow: 'auto',
-         code: {
-            color: 'inherit',
-         },
-         variant: 'prism',
-      },
-      code: {
-         fontFamily: 'monospace',
-         fontSize: 1,
-      },
-      inlineCode: {
-         fontFamily: 'monospace',
-         color: 'secondary',
-         bg: 'muted',
-      },
       table: {
          width: '100%',
          my: 4,
@@ -318,62 +280,6 @@ export default {
          ':hover,:focus': {
             color: 'primary',
          },
-      },
-   },
-   prism: {
-      ...prism,
-      '.bold': {
-         fontWeight: 'bold',
-      },
-      '.bold.punctuation': {
-         display: 'none',
-      },
-      '.title': {
-         display: 'inline-block',
-         fontWeight: 'bold',
-         fontSize: '20px',
-         margin: '20px 0 10px 0',
-      },
-      '.title.punctuation': {
-         display: 'none',
-      },
-      '.list': {
-         paddingLeft: '10px',
-         fontSize: '20px',
-         lineHeight: '10px',
-      },
-      '.list.punctuation': {
-         display: 'none',
-      },
-      '.hr': {
-         display: 'block',
-         textAlign: 'center',
-         borderBottom: '2px solid #ddd',
-      },
-      '.hr.punctuation': {
-         display: 'none',
-      },
-      '.blockquote': {
-         display: 'inline-block',
-         borderLeft: '2px solid #ddd',
-         paddingLeft: '10px',
-         color: '#aaa',
-         fontStyle: 'italic',
-      },
-      '.blockquote.punctuation': {
-         display: 'none',
-      },
-      '.blockquote.punctuation + *': {
-         borderLeft: '2px solid #ddd',
-         pl: 3,
-      },
-      '.code': {
-         fontFamily: 'monospace',
-         bg: '#eee',
-         p: '3px',
-      },
-      '.code.punctuation': {
-         display: 'none',
       },
    },
 };
