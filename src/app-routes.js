@@ -5,10 +5,18 @@ import HomePage from './pages/home';
 import LoginPage from './pages/login';
 import RegisterPage from './pages/register';
 
-const CreateArticlePage = lazy(() => import('./pages/create-article'));
-const EditArticlePage = lazy(() => import('./pages/edit-article'));
-const ProfilePage = lazy(() => import('./pages/profile'));
-const ArticlePage = lazy(() => import('./pages/article'));
+const CreateArticlePage = lazy(() =>
+   import(/* webpackChunkName: "create-article" */ './pages/create-article')
+);
+const EditArticlePage = lazy(() =>
+   import(/* webpackChunkName: "edit-article" */ './pages/edit-article')
+);
+const ProfilePage = lazy(() =>
+   import(/* webpackChunkName: "profile" */ './pages/profile')
+);
+const ArticlePage = lazy(() =>
+   import(/* webpackChunkName: "article" */ './pages/article')
+);
 
 const AppRoutes = () => {
    const location = useLocation();
