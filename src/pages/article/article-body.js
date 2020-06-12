@@ -10,7 +10,7 @@ function ArticleBody({ article }) {
       slug: article.slug,
       content: article.body,
    });
-   const markup = { __html: data };
+   const Markup = data;
 
    return status == 'loading' ? (
       <span>Loading article body...</span>
@@ -25,7 +25,10 @@ function ArticleBody({ article }) {
          }}
          py={4}
       >
-         <Box py={4} dangerouslySetInnerHTML={markup}></Box>
+         <div>
+            <Markup />
+         </div>
+         {/* <Box py={4} dangerouslySetInnerHTML={markup}></Box> */}
          <TagList tags={article.tagList} />
       </Flex>
    );
