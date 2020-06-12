@@ -12,6 +12,7 @@ const transform = code =>
 
 module.exports = async mdxCode => {
    const jsx = await mdx(mdxCode, { skipExport: true });
+   return jsx;
    const code = transform(jsx);
    const scope = { mdx: createElement };
 
