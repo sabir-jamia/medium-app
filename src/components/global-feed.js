@@ -1,10 +1,8 @@
 import React from 'react';
 
 import { useArticles } from '../hooks/use-articles';
-import ArticleList from './article-list';
-import Pagination from './pagination';
 
-function GlobalFeed({ page, onPageChange }) {
+function GlobalFeed({ page, children }) {
    const { status, resolvedData, error } = useArticles(page);
 
    return status == 'loading' ? (
@@ -12,14 +10,7 @@ function GlobalFeed({ page, onPageChange }) {
    ) : status == 'error' ? (
       <span>Error: {error.message}</span>
    ) : (
-      <>
-         <ArticleList articles={resolvedData.articles} />
-         <Pagination
-            currentPage={page}
-            onPageChange={onPageChange}
-            pages={Math.ceil(resolvedData.articlesCount / 10)}
-         />
-      </>
+      children(resolvedData.articles, resolvedData.articlesCount)
    );
 }
 

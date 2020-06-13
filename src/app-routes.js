@@ -2,9 +2,13 @@ import React, { lazy } from 'react';
 import { Route, Switch, Redirect, useLocation } from 'react-router-dom';
 
 import HomePage from './pages/home';
-import LoginPage from './pages/login';
-import RegisterPage from './pages/register';
 
+const LoginPage = lazy(() =>
+   import(/* webpackChunkName: "login" */ './pages/login')
+);
+const RegisterPage = lazy(() =>
+   import(/* webpackChunkName: "register" */ './pages/register')
+);
 const CreateArticlePage = lazy(() =>
    import(/* webpackChunkName: "create-article" */ './pages/create-article')
 );

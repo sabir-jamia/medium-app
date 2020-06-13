@@ -1,16 +1,13 @@
 /**@jsx jsx */
 import { jsx } from '@theme-ui/core';
 import { Box } from '@theme-ui/components';
-import { useReducer, Fragment } from 'react';
-import { queryCache } from 'react-query';
+import { useReducer, Fragment, Suspense } from 'react';
 
-import GlobalFeed from '../../components/global-feed';
-import YourFeed from '../../components/your-feed';
 import Tabs from '../../components/tabs';
 import PopularTags from '../../components/popular-tags';
-import TagFeed from '../../components/tag-feed';
-
+import Feed from './feed';
 import { homeReducer, init } from './reducer';
+import { useAuth } from '../../hooks/use-auth';
 
 const feedTabNames = new Map([
    ['your', 'Your Feed'],
@@ -18,7 +15,7 @@ const feedTabNames = new Map([
 ]);
 
 function HomePage() {
-   const loggedInUser = queryCache.getQueryData('user');
+   const { user: loggedInUser } = useAuth();
    const [{ feedTabs, feed, page }, dispatch] = useReducer(
       homeReducer,
       null,
@@ -47,17 +44,13 @@ function HomePage() {
                onTabChange={handleFeedTabChange}
                selectedTab={feed}
             >
-               {feed == 'global' ? (
-                  <GlobalFeed page={page} onPageChange={handlePageChange} />
-               ) : feed == 'your' ? (
-                  <YourFeed page={page} onPageChange={handlePageChange} />
-               ) : (
-                  <TagFeed
-                     tag={feed}
+               <Suspense fallback={<span>Article list loading...</span>}>
+                  <Feed
+                     feed={feed}
                      page={page}
-                     onPageChange={handlePageChange}
+                     handlePageChange={handlePageChange}
                   />
-               )}
+               </Suspense>
             </Tabs>
          </Box>
          <Box mt={4} ml={3} sx={{ maxWidth: '18%' }}>

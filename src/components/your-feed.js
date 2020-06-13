@@ -1,9 +1,7 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import useFeed from '../hooks/use-feed';
-import ArticleList from '../components/article-list';
-import Pagination from './pagination';
 
-function YourFeed({ page, onPageChange }) {
+function YourFeed({ page, children }) {
    const { status, resolvedData, error } = useFeed(page);
 
    return status == 'loading' ? (
@@ -11,16 +9,7 @@ function YourFeed({ page, onPageChange }) {
    ) : status == 'error' ? (
       <span>Error: {error.message}</span>
    ) : (
-      <>
-         <ArticleList articles={resolvedData.articles} />
-         {resolvedData.articlesCount > 10 && (
-            <Pagination
-               currentPage={page}
-               onPageChange={onPageChange}
-               pages={Math.ceil(resolvedData.articlesCount / 10)}
-            />
-         )}
-      </>
+      children(resolvedData.articles, resolvedData.articlesCount)
    );
 }
 

@@ -33,7 +33,7 @@ function LoginPage() {
    };
 
    return (
-      <Box className='content-width' m={4} bg='muted' p={5}>
+      <Box sx={{ width: '60%' }} m={4} bg='muted' p={5}>
          {state.errors.map(error => (
             <li key={error}>{error}</li>
          ))}

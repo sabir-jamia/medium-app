@@ -1,10 +1,8 @@
-import React, { Fragment } from 'react';
+import React from 'react';
 
 import { useTagArticles } from '../hooks/use-articles';
-import ArticleList from './article-list';
-import Pagination from './pagination';
 
-function TagFeed({ tag, page, onPageChange }) {
+function TagFeed({ tag, page, children }) {
    const { status, resolvedData, error } = useTagArticles({ tag, page });
 
    return status == 'loading' ? (
@@ -12,16 +10,7 @@ function TagFeed({ tag, page, onPageChange }) {
    ) : status == 'error' ? (
       <span>Error: {error.message}</span>
    ) : (
-      <Fragment>
-         <ArticleList articles={resolvedData.articles} />
-         {resolvedData.articlesCount > 10 && (
-            <Pagination
-               currentPage={page}
-               onPageChange={onPageChange}
-               pages={Math.ceil(resolvedData.articlesCount / 10)}
-            />
-         )}
-      </Fragment>
+      children(resolvedData.articles, resolvedData.articlesCount)
    );
 }
 

@@ -1,7 +1,7 @@
 const path = require('path');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
-   .BundleAnalyzerPlugin;
+// const BundleAnalyzerPlugin = require('webpack-bundle-analyzer')
+// .BundleAnalyzerPlugin;
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const Webpack = require('webpack');
 const dotenv = require('dotenv');
@@ -20,7 +20,7 @@ module.exports = {
          template: path.resolve(__dirname, 'public/index.html'),
       }),
       new CleanWebpackPlugin(),
-      new BundleAnalyzerPlugin(),
+      // new BundleAnalyzerPlugin(),
       new Webpack.EnvironmentPlugin({
          ...dotenv.config().parsed,
       }),
