@@ -1,7 +1,7 @@
 /**@jsx jsx */
 import { jsx } from '@theme-ui/core';
 import { Box } from '@theme-ui/components';
-import { useReducer, Fragment, Suspense } from 'react';
+import { useReducer, Fragment, Suspense, useEffect } from 'react';
 
 import Tabs from '../../components/tabs';
 import PopularTags from '../../components/popular-tags';
@@ -15,12 +15,19 @@ const feedTabNames = new Map([
 ]);
 
 function HomePage() {
-   const { user: loggedInUser } = useAuth();
+   const { user: loggedInUser, status } = useAuth();
    const [{ feedTabs, feed, page }, dispatch] = useReducer(
       homeReducer,
       null,
       init(loggedInUser)
    );
+
+   useEffect(() => {
+      if (status == 'success' && loggedInUser) {
+         dispatch({ type: 'ADD_YOUR_FEED' });
+         dispatch({ type: 'FEED_CHANGE', feed: 'your' });
+      }
+   }, [status, loggedInUser]);
 
    const handleFeedTabChange = feed => {
       dispatch({ type: 'FEED_CHANGE', feed });

@@ -8,6 +8,14 @@ function homeReducer(state, action) {
       return { ...state, feedTabs: newFeedTabs };
    }
 
+   if (action.type == 'ADD_YOUR_FEED') {
+      if (state.feedTabs.length == 2) {
+         return state;
+      }
+
+      return { ...state, feedTabs: ['your', ...state.feedTabs] };
+   }
+
    if (action.type == 'FEED_CHANGE') {
       return { ...state, feed: action.feed, page: INIT_PAGE };
    }
