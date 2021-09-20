@@ -15,7 +15,7 @@
       "@emotion/core": "^10.0.28",
       "@mdx-js/mdx": "^1.6.5",
       "@theme-ui/presets": "^0.3.0",
-      "prismjs": "^1.20.0",
+      "prismjs": "^1.25.0",
       "react": "^16.13.1",
       "react-dom": "^16.13.1",
       "react-query": "^1.5.3",
